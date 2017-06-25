@@ -1,9 +1,11 @@
-import React, {Component,PropTypes} from 'react'
+import React, {Component} from 'react'
 import Button from 'react-native-button'
+
+
 
 import { styles } from './styles'
 import {
-    NavigatorIOS,
+
     Text,
     TextInput,
     View,
@@ -19,17 +21,7 @@ import Vote from '../Main/Main';
 
 export default class Login extends Component{
 
-    // constructor(props){
-    //     super(props)
-    //     this.state = {
-    //         email: '',
-    //         password: '',
-    //     }
-    //
-    // }
-    // _handlePress() {
-    //     console.log('Pressed!');
-    // }
+
     _navigateToMain = ()=> {
         this.props.navigator.push({
             component: Vote,
@@ -40,6 +32,7 @@ export default class Login extends Component{
 
 
     render(){
+
         return(
 
 
@@ -70,8 +63,7 @@ export default class Login extends Component{
                     <View style={styles.hairline}/>
                     <Text style={styles.textHead}>Password</Text>
                     <TextInput style={styles.textInput}
-                        // onChangeText={(text) => this.setState({password: text})}
-                        // value={this.state.password}
+
 
 
                                autoCorrect={false}

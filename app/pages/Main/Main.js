@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Animated, View, Text, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 import  Icon  from 'react-native-vector-icons/Ionicons';
 import { TabViewAnimated, TabBar } from 'react-native-tab-view';
 import Rank from './Rank';
@@ -7,6 +8,7 @@ import Vote from './Vote';
 import Upload from './Upload';
 import Follow from './Follow';
 import Mypage from './Mypage';
+
 
 
 import type { NavigationState } from 'react-native-tab-view/types';
@@ -28,9 +30,9 @@ export default class TopBarIconExample extends PureComponent<void, *, State> {
     state: State = {
         index: 0,
         routes: [
-            { key: '1',  icon: 'ios-flame' },
-            { key: '2', icon: 'md-trophy' },
-            { key: '3',  icon: 'ios-camera' },
+            { key: '1',  icon: 'md-trophy' },
+            { key: '2', icon: 'md-list-box' },
+            { key: '3',  icon: 'md-add-circle' },
             { key: '4',  icon: 'ios-eye' },
             { key: '5',  icon: 'md-person' },
         ],
