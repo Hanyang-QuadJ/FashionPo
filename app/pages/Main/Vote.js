@@ -18,38 +18,42 @@ import Fitimage from 'react-native-fit-image'
 export default class Vote extends Component{
     render(){
         return(
-        <View style={styles.container}>
-            <View style={styles.navbar}>
-                <StatusBar barStyle="light-content"/>
 
-                <TouchableOpacity><Icon name="ios-camera" size={24} color="white"/></TouchableOpacity>
+        <View style={styles.container}>
+            <StatusBar barStyle="dark-content"/>
+
+
+            <View style={styles.navbar}>
+
+
+
+                <TouchableOpacity><Icon name="ios-camera" size={24} color="black"/></TouchableOpacity>
                 <Text style={styles.titleText}>Fashion Po</Text>
-                <TouchableOpacity><Icon name="md-arrow-round-forward" size={24} color="white"/></TouchableOpacity>
+                <TouchableOpacity><Icon name="md-arrow-round-forward" size={24} color="black"/></TouchableOpacity>
             </View>
                 <View style={styles.spacetop}>
 
 
 
                 </View>
-            <View style={styles.line1}></View>
+
                 <View style={styles.picture}>
-                    <View style={styles.vote1}>
-                        <Fitimage source={require('../../img/vote1.png')} />
+
+                    <Fitimage source={require('../../img/vote1.png')} originalWidth={400} originalHeight={550} style={styles.vote1} />
+                    <Fitimage source={require('../../img/vote2.png')} originalWidth={400} originalHeight={550} style={styles.vote1}  />
 
 
 
-                    </View>
-                    <View style={styles.vote2}>
 
-                    </View>
 
 
                 </View>
-            <View style={styles.line2}></View>
+
                 <View style={styles.spacetop}>
 
 
                 </View>
+
         </View>
 
 
@@ -58,10 +62,7 @@ export default class Vote extends Component{
     }
 }
 const styles = StyleSheet.create({
-    divider: {
-        flex: 1,
-        height: StyleSheet.hairlineWidth,
-    },
+
     vote1:{
         flex:2,
 
@@ -73,16 +74,11 @@ const styles = StyleSheet.create({
 
     },
     line1:{
-        flex: 1,
+        flex: .1,
         backgroundColor:"#ffc305",
 
     },
-    line2:{
-        flex: 1,
-        backgroundColor:"#ff5733",
 
-
-    },
     spaceText:{
         textAlign: "center",
     },
@@ -108,7 +104,7 @@ const styles = StyleSheet.create({
     navbar: {
         paddingTop: 20,
         height: 64,
-        backgroundColor: '#ff5733',
+        backgroundColor: "#ffc305",
         borderBottomWidth: StyleSheet.hairlineWidth,
         borderBottomColor: '#DDDDDD',
         paddingHorizontal: 12,
@@ -121,10 +117,10 @@ const styles = StyleSheet.create({
     },
     titleText: {
         fontWeight: '600',
-        color: 'white',
+        color: 'black',
     },
     rightText: {
-        color: 'white',
+        color: 'black',
     },
     container: {
         flex: 1,

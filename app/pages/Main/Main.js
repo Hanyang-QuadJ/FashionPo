@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Animated, View, Text, StyleSheet } from 'react-native';
+import { Animated, View, Text, StyleSheet,StatusBar,TouchableWithoutFeedback } from 'react-native';
 import PropTypes from 'prop-types';
 import  Icon  from 'react-native-vector-icons/Ionicons';
 import { TabViewAnimated, TabBar } from 'react-native-tab-view';
@@ -13,6 +13,8 @@ import Mypage from './Mypage';
 
 import type { NavigationState } from 'react-native-tab-view/types';
 
+const AnimatedIcon = Animated.createAnimatedComponent(Icon);
+
 type Route = {
     key: string,
     title: string,
@@ -22,19 +24,20 @@ type Route = {
 type State = NavigationState<Route>;
 
 
-export default class TopBarIconExample extends PureComponent<void, *, State> {
-    static title = 'Bottom bar with indicator';
-    static appbarElevation = 4;
+export default class Main extends PureComponent<void, *, State> {
+    static title = 'No animation';
+    static backgroundColor = '#f47857';
+
 
 
     state: State = {
         index: 0,
         routes: [
-            { key: '1',  icon: 'md-trophy' },
-            { key: '2', icon: 'md-list-box' },
-            { key: '3',  icon: 'md-add-circle' },
-            { key: '4',  icon: 'ios-eye' },
-            { key: '5',  icon: 'md-person' },
+            { key: '1',  icon: 'ios-trophy'},
+            { key: '2', icon: 'ios-person'},
+            { key: '3',  icon: 'ios-camera' },
+            { key: '4',  icon: 'ios-eye',},
+
         ],
     };
 
@@ -44,47 +47,75 @@ export default class TopBarIconExample extends PureComponent<void, *, State> {
         });
     };
 
-    _renderIndicator = props => {
-        const { width, position } = props;
 
-        const translateX = Animated.multiply(position, width);
 
+    _renderIcon = ({ navigationState, position }) => ({
+                                                          route,
+                                                          index,
+                                                      }: { route: Route, index: number }) => {
+        const inputRange = navigationState.routes.map((x, i) => i);
+        const filledOpacity = position.interpolate({
+            inputRange,
+            outputRange: inputRange.map(i => (i === index ? 1 : 0)),
+        });
+        const outlineOpacity = position.interpolate({
+            inputRange,
+            outputRange: inputRange.map(i => (i === index ? 0 : 1)),
+        });
         return (
-            <Animated.View
-                style={[styles.container, { width, transform: [{ translateX }] }]}
-            >
-                <View style={styles.indicator} />
-            </Animated.View>
+            <View style={styles.iconContainer}>
+                <AnimatedIcon
+                    name={route.icon}
+                    size={28}
+                    style={[styles.icon, { opacity: filledOpacity }]}
+                />
+                <AnimatedIcon
+                    name={route.icon}
+                    size={28}
+                    style={[styles.icon2, styles.outline, { opacity: outlineOpacity }]}
+                />
+
+            </View>
         );
     };
 
-    _renderIcon = ({ route }) => {
-        return <Icon name={route.icon} size={24} style={styles.icon} />;
-    };
 
-    _renderBadge = ({ route }) => {
-        if (route.key === '2') {
-            return (
-                <View style={styles.badge}>
-                    <Text style={styles.count}>42</Text>
-                </View>
-            );
-        }
-        return null;
-    };
+
+
+
+
+
 
     _renderFooter = props => {
         return (
-            <TabBar
-                {...props}
-                renderIcon={this._renderIcon}
-                // renderBadge={this._renderBadge}
-                renderIndicator={this._renderIndicator}
-                style={styles.tabbar}
-                tabStyle={styles.tab}
-            />
+            <View style={styles.tabbar}>
+                {props.navigationState.routes.map((route, index) => {
+                    return (
+                        <TouchableWithoutFeedback
+                            key={route.key}
+                            onPress={() => props.jumpToIndex(index)}
+                        >
+                            <Animated.View style={styles.tab}>
+                                {this._renderIcon(props)({ route, index })}
+
+                            </Animated.View>
+                        </TouchableWithoutFeedback>
+                    );
+                })}
+            </View>
         );
     };
+
+
+
+
+
+
+
+
+
+
+
 
     _renderScene = ({ route }) => {
         switch (route.key) {
@@ -92,37 +123,31 @@ export default class TopBarIconExample extends PureComponent<void, *, State> {
                 return (
                     <Vote
                         state={this.state}
-                        style={{ backgroundColor: '#ff4081' }}
+
                     />
                 );
             case '2':
                 return (
-                    <Rank
+                    <Mypage
                         state={this.state}
-                        style={{ backgroundColor: '#673ab7' }}
+
                     />
                 );
             case '3':
                 return (
                     <Upload
                         state={this.state}
-                        style={{ backgroundColor: '#4caf50' }}
+
                     />
                 );
             case '4':
                 return (
-                    <Follow
+                    <Rank
                         state={this.state}
-                        style={{ backgroundColor: '#4caf50' }}
+
                     />
                 );
-            case '5':
-                return (
-                    <Mypage
-                        state={this.state}
-                        style={{ backgroundColor: '#4caf50' }}
-                    />
-                );
+
             default:
                 return null;
         }
@@ -130,6 +155,7 @@ export default class TopBarIconExample extends PureComponent<void, *, State> {
 
     render() {
         return (
+
             <TabViewAnimated
                 style={[styles.container, this.props.style]}
                 navigationState={this.state}
@@ -139,33 +165,45 @@ export default class TopBarIconExample extends PureComponent<void, *, State> {
                 renderFooter={this._renderFooter}
                 onRequestChangeTab={this._handleChangeTab}
             />
+
         );
     }
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 2,
+        flex: 1,
     },
     tabbar: {
-        backgroundColor: '#ffc305',
+        backgroundColor: '#fdfdfd',
         height: 45,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     },
     tab: {
+        flex: 1,
+        alignItems: 'center',
+        borderTopWidth: StyleSheet.hairlineWidth,
+        borderTopColor: 'rgba(0, 0, 0, .2)',
+        paddingTop: 5,
 
-        padding: 10,
+    },
+
+    icon2: {
+        color: '#959595',
     },
     icon: {
         backgroundColor: 'transparent',
-        color: 'white',
+        position: 'absolute',
+        textAlign: 'center',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        color: '#ff5733',
     },
-    indicator: {
-        flex: 1,
-        backgroundColor: '#ff5733',
 
-        padding:5,
-        borderRadius: 2,
-    },
+
     badge: {
         marginTop: 4,
         marginRight: 32,
