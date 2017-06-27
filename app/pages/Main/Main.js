@@ -6,7 +6,7 @@ import { TabViewAnimated, TabBar } from 'react-native-tab-view';
 import Rank from './Rank';
 import Vote from './Vote';
 import Upload from './Upload';
-import Follow from './Follow';
+import Follow from './MypageTab';
 import Mypage from './Mypage';
 
 

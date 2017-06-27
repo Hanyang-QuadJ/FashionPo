@@ -1,12 +1,16 @@
 import React, {Component} from 'react'
+import Button from 'react-native-button'
+import { TabViewAnimated, TabBar } from 'react-native-tab-view';
 import {
     Text,
     View,
     Image,
     StyleSheet,
     Navigator,
+    ScrollView,
     StatusBar,
     Dimensions,
+
 
 
     TouchableOpacity,
@@ -14,6 +18,8 @@ import {
 } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import FitImage from 'react-native-fit-image'
+import Follow from './MypageTab'
+
 
 
 
@@ -24,56 +30,56 @@ export default class Mypage extends Component{
 
 
         return(
+            <ScrollView style={styles.container}>
 
-            <View style={styles.container}>
+
                 <View style={styles.overlay}>
                     <FitImage source={require('../../img/cover.png')} style={styles.cover} />
+                    <Text style={styles.name}>Lee Haran</Text>
                 </View>
                 <Image source={require('../../img/profile.png')} style={styles.profile}/>
 
 
                 <View style={styles.buttonArea}>
 
-                        <Text style={styles.buttonLeft}>Followers</Text>
-                    <Text style={styles.buttonRight}>Post</Text>
+                    <Text style={styles.buttonLeft}>Followers{"\n"}     <Text style={styles.number}>10</Text></Text>
+
+                    <Text style={styles.buttonRight}>Post{"\n"} <Text style={styles.number}>20</Text></Text>
+
 
 
                 </View>
 
-                <View style={styles.description}></View>
+
+
+                <View style={styles.description}>
+                    <Follow/>
+
+
+                </View>
 
 
 
 
-            </View>
+
+
+
+
+
+            </ScrollView>
 
         );
     }
 }
 const win = Dimensions.get('window');
 const styles = StyleSheet.create({
-    main:{
-        flex:2,
-        fontSize: 30,
-        padding: 100,
-        justifyContent:'center',
-        alignItems:'center',
-        textAlign: 'center',
-    },
-    navbar: {
-        paddingTop: 20,
-        height: 64,
-        backgroundColor: "#ffc305",
-        borderBottomWidth: StyleSheet.hairlineWidth,
-        borderBottomColor: '#DDDDDD',
-        paddingHorizontal: 12,
-        flexDirection: 'row', // step 1
+
+
+    description:{
+        flex:5,
+        flexDirection:'row',
         justifyContent: 'space-between', // step 2
         alignItems: 'center', // step 3
-    },
-    description:{
-        flex:1,
-        backgroundColor:'yellow'
     },
 
     titleText: {
@@ -89,9 +95,6 @@ const styles = StyleSheet.create({
         height:150,
         alignSelf: 'stretch',
         resizeMode: 'cover',
-
-
-
     },
     profile:{
         alignSelf:'center',
@@ -105,12 +108,21 @@ const styles = StyleSheet.create({
     overlay:{
         backgroundColor: 'black'
     },
+    name:{
+      position:'absolute',
+        top:120,
+        left:20,
+        bottom:0,
+        color: 'white',
+        fontSize:15,
+        backgroundColor:'transparent'
+    },
     buttonArea:{
-        flex:.4,
+
         backgroundColor: "transparent",
-        borderBottomWidth: StyleSheet.hairlineWidth,
-        borderBottomColor: '#DDDDDD',
-        paddingHorizontal: 4,
+
+        paddingTop:20,
+        paddingBottom:10,
         flexDirection: 'row', // step 1
         justifyContent: 'space-between', // step 2
         alignItems: 'center', // step 3
@@ -120,12 +132,24 @@ const styles = StyleSheet.create({
         color: "black",
 
     },
+    myPicture:{
+        flex: 2,
+        backgroundColor:'blue',
+
+    },
     buttonRight:{
 
-        paddingRight:40,
+        paddingRight:45,
         color:"black",
 
     },
+    number:{
+        fontSize:20,
+        fontWeight:'500',
+
+
+    },
+
 
     container: {
         flex: 0.6,
