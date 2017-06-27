@@ -19,18 +19,23 @@ export default class Vote extends Component{
     render(){
         return(
 
+
         <View style={styles.container}>
-            <StatusBar barStyle="dark-content"/>
+
+
 
 
             <View style={styles.navbar}>
 
 
 
-                <TouchableOpacity><Icon name="ios-camera" size={24} color="black"/></TouchableOpacity>
+
+                <TouchableOpacity><Icon name="ios-camera" size={24} color="white"/></TouchableOpacity>
                 <Text style={styles.titleText}>Fashion Po</Text>
-                <TouchableOpacity><Icon name="md-arrow-round-forward" size={24} color="black"/></TouchableOpacity>
+                <TouchableOpacity><Icon name="md-arrow-round-forward" size={24} color="white"/></TouchableOpacity>
+
             </View>
+            <StatusBar barStyle="dark-content"/>
                 <View style={styles.spacetop}>
 
 
@@ -54,7 +59,9 @@ export default class Vote extends Component{
 
                 </View>
 
+
         </View>
+
 
 
 
@@ -75,7 +82,7 @@ const styles = StyleSheet.create({
     },
     line1:{
         flex: .1,
-        backgroundColor:"#ffc305",
+        backgroundColor:"#ff5733",
 
     },
 
@@ -104,7 +111,7 @@ const styles = StyleSheet.create({
     navbar: {
         paddingTop: 20,
         height: 64,
-        backgroundColor: "#ffc305",
+        backgroundColor: "#ff5733",
         borderBottomWidth: StyleSheet.hairlineWidth,
         borderBottomColor: '#DDDDDD',
         paddingHorizontal: 12,
@@ -117,10 +124,10 @@ const styles = StyleSheet.create({
     },
     titleText: {
         fontWeight: '600',
-        color: 'black',
+        color: 'white',
     },
     rightText: {
-        color: 'black',
+        color: 'white',
     },
     container: {
         flex: 1,

@@ -63,7 +63,7 @@ export default class Main extends PureComponent<void, *, State> {
             outputRange: inputRange.map(i => (i === index ? 0 : 1)),
         });
         return (
-            <View style={styles.iconContainer}>
+            <View>
                 <AnimatedIcon
                     name={route.icon}
                     size={28}
@@ -74,17 +74,10 @@ export default class Main extends PureComponent<void, *, State> {
                     size={28}
                     style={[styles.icon2, styles.outline, { opacity: outlineOpacity }]}
                 />
-
             </View>
+
         );
     };
-
-
-
-
-
-
-
 
     _renderFooter = props => {
         return (
@@ -105,16 +98,6 @@ export default class Main extends PureComponent<void, *, State> {
             </View>
         );
     };
-
-
-
-
-
-
-
-
-
-
 
 
     _renderScene = ({ route }) => {
@@ -156,6 +139,8 @@ export default class Main extends PureComponent<void, *, State> {
     render() {
         return (
 
+
+
             <TabViewAnimated
                 style={[styles.container, this.props.style]}
                 navigationState={this.state}
@@ -164,7 +149,9 @@ export default class Main extends PureComponent<void, *, State> {
                 renderScene={this._renderScene}
                 renderFooter={this._renderFooter}
                 onRequestChangeTab={this._handleChangeTab}
+
             />
+
 
         );
     }
