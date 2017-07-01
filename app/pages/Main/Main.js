@@ -6,7 +6,6 @@ import { TabViewAnimated, TabBar } from 'react-native-tab-view';
 import Rank from './Rank';
 import Vote from './Vote';
 import Upload from './Upload';
-import Follow from './MypageTab';
 import Mypage from './Mypage';
 
 
@@ -66,12 +65,12 @@ export default class Main extends PureComponent<void, *, State> {
             <View>
                 <AnimatedIcon
                     name={route.icon}
-                    size={28}
+                    size={30}
                     style={[styles.icon, { opacity: filledOpacity }]}
                 />
                 <AnimatedIcon
                     name={route.icon}
-                    size={28}
+                    size={30}
                     style={[styles.icon2, styles.outline, { opacity: outlineOpacity }]}
                 />
             </View>

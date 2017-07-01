@@ -5,6 +5,7 @@ import {
     StyleSheet,
     Navigator,
     ListView,
+    ScrollView,
 
 } from 'react-native'
 
@@ -23,11 +24,15 @@ export default class Follow extends Component{
         return <Text style={styles.row}>{rowData}</Text>
 
     }
+
     render(){
         return(
+            <ScrollView>
 
 
-            <ListView dataSource={this.state.dataSource} renderRow={this._renderRow}/>
+                <ListView dataSource={this.state.dataSource} renderRow={this._renderRow} removeClippedSubviews={false}/>
+            </ScrollView>
+
 
 
         );
@@ -51,3 +56,4 @@ const styles = StyleSheet.create({
     }
 
 });
+

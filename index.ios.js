@@ -1,11 +1,15 @@
 import React, { Component, } from 'react';
 
+
 import {
     AppRegistry,
+    View,
+    StyleSheet,
     NavigatorIOS,
     Navigator} from 'react-native';
 
 import Login from "./app/pages/Authentication/Login";
+
 
 export default class FashionPo extends Component {
     render() {
@@ -19,11 +23,15 @@ export default class FashionPo extends Component {
                 }}
             />
 
-
-
         );
     }
 
 }
+const styles = StyleSheet.create({
+    container: {
+        flex:1,
+        padding:10,
+    }
+});
 
 AppRegistry.registerComponent('FashionPo', () => FashionPo);
