@@ -8,7 +8,7 @@ import {
     NavigatorIOS,
     Navigator} from 'react-native';
 
-import Login from "./app/pages/Authentication/Login";
+import Login from "./app/pages/Authentication/index";
 
 
 export default class FashionPo extends Component {

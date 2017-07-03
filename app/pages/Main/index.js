@@ -3,10 +3,10 @@ import { Animated, View, Text, StyleSheet,StatusBar,TouchableWithoutFeedback } f
 import PropTypes from 'prop-types';
 import  Icon  from 'react-native-vector-icons/Ionicons';
 import { TabViewAnimated, TabBar } from 'react-native-tab-view';
-import Rank from './Rank';
-import Vote from './Vote';
-import Upload from './Upload';
-import Mypage from './Mypage';
+import Rank from './Rank/Rank';
+import Vote from './Vote/Vote';
+import Upload from './Upload/Upload';
+import Profile from './Profile/index';
 
 
 
@@ -110,7 +110,7 @@ export default class Main extends PureComponent<void, *, State> {
                 );
             case '2':
                 return (
-                    <Mypage
+                    <Profile
                         state={this.state}
 
                     />

@@ -44,8 +44,8 @@ export default class Vote extends Component{
 
                 <View style={styles.picture}>
 
-                    <Fitimage source={require('../../img/vote1.png')} originalWidth={400} originalHeight={550} style={styles.vote1} />
-                    <Fitimage source={require('../../img/vote2.png')} originalWidth={400} originalHeight={550} style={styles.vote1}  />
+                    <Fitimage source={require('../../../img/vote1.png')} originalWidth={400} originalHeight={550} style={styles.vote1} />
+                    <Fitimage source={require('../../../img/vote2.png')} originalWidth={400} originalHeight={550} style={styles.vote1}  />
 
 
 

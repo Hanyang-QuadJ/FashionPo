@@ -209,6 +209,11 @@ export default  {
         flex: 0.6,
         flexDirection: 'column',
     },
+    profileText:{
+        flex:0.7,
+        backgroundColor:"red",
+
+    },
 
 
 }

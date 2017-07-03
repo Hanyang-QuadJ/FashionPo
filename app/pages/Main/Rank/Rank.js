@@ -8,21 +8,77 @@ import {
     Navigator,
     TouchableOpacity,
 
+
 } from 'react-native'
+import SearchBar from 'react-native-searchbar'
+
+
+const items = [
+    1337,
+    'janeway',
+    {
+        lots: 'of',
+        different: {
+            types: 0,
+            data: false,
+            that: {
+                can: {
+                    be: {
+                        quite: {
+                            complex: {
+                                hidden: [ 'gold!' ],
+                            },
+                        },
+                    },
+                },
+            },
+        },
+    },
+    [ 4, 2, 'tree' ],
+];
 
 
 
 export default class Rank extends Component{
+
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            items,
+            results: []
+        };
+        this._handleResults = this._handleResults.bind(this);
+    }
+
+
+    _handleResults(results) {
+        this.setState({ results });
+    }
     render(){
+
+
         return(
             <View style={styles.container}>
-                <View style={styles.navbar}>
-                    <StatusBar barStyle="light-content"/>
+                <StatusBar barStyle="light-content"/>
 
 
-                    <Text style={styles.titleText}>Fashion Po</Text>
 
-                </View>
+
+                    <SearchBar
+                        ref={(ref) => this.searchBar = ref}
+                        data={items}
+                        handleResults={this._handleResults}
+                        showOnLoad
+                        // iOSPadding={true}
+                        textColor="white"
+                        heightAdjust={-10}
+                        backgroundColor="#ff5733"
+                        hideBack={true}
+                        fontSize={14}
+                    />
+
+
 
                 <View style={styles.spacetop}>
 
@@ -30,17 +86,7 @@ export default class Rank extends Component{
                 </View>
 
 
-                <View style={styles.picture}>
-                    <View style={styles.vote1}>
-                    </View>
-                    <View style={styles.vote2}>
-                    </View>
-                </View>
-                <View style={styles.line}></View>
-                <View style={styles.spacetop}>
 
-
-                </View>
             </View>
 
 
@@ -54,6 +100,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
+    spacetop:{
+        flex:1,
+        backgroundColor:"yellow"
+    },
     tabbar: {
         backgroundColor: '#ffc305',
         height: 45,
@@ -66,11 +116,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
         color: 'white',
     },
-    line:{
-        flex: 2,
-        backgroundColor:"red",
 
-    },
     indicator: {
         flex: 1,
         backgroundColor: '#ff5733',

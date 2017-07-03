@@ -3,7 +3,7 @@ import Button from 'react-native-button'
 
 
 
-import { styles } from './styles'
+import { styles } from './Components/styles'
 import {
 
     Text,
@@ -16,7 +16,7 @@ import {
     AsyncStorage,
 
 } from 'react-native'
-import Vote from '../Main/Main';
+import Vote from '../Main/index';
 
 
 export default class Login extends Component{

@@ -17,11 +17,11 @@ import {
 // import Mypicture from './Mypicture'
 // import MypageTab from './MypageTab'
 // import Follow from './Follow'
-import styles from './styles'
-import LoadingSpinner from "./loadingSpinner/LoadingSpinner";
-import ControlTab from "./controlTab/ControlTab";
-import FlatListItem from "./itemContainer/flatListItem";
-import FlatListGrid from "./itemContainer/flatListGrid";
+import styles from '../styles'
+import LoadingSpinner from "../loadingSpinner/LoadingSpinner";
+import ControlTab from "../controlTab/ControlTab";
+import FlatListItem from "../itemContainer/flatListItem";
+import FlatListGrid from "../itemContainer/flatListGrid";
 import UltimateListView from "react-native-ultimate-listview";
 import FitImage from "react-native-fit-image"
 
@@ -34,7 +34,7 @@ export default class Mypage extends Component{
         super(props);
         this.state = {
             layout: 'list',
-            text: ''
+            text: '',
         }
     }
 
@@ -121,23 +121,23 @@ export default class Mypage extends Component{
         return (
             <View style={styles.container}>
                 <View style={styles.overlay}>
-                    <Image source={require('../../img/cover.png')} style={styles.cover} />
+                    <Image source={require('../../../img/cover.png')} style={styles.cover} />
                     <Text style={styles.name}>Lee Haran</Text>
                 </View>
-                <Image source={require('../../img/profile.png')} style={styles.profile}/>
+                <Image source={require('../../../img/profile.png')} style={styles.profile}/>
 
 
                 <View style={styles.textArea}>
 
                     <Text style={styles.buttonLeft}>Followers{"\n"}     <Text style={styles.number}>10</Text></Text>
 
-                    <Text style={styles.buttonRight}>Follwings{"\n"} <Text style={styles.number}>20</Text></Text>
+                    <Text style={styles.buttonRight}>Follwings{"\n"}    <Text style={styles.number}>20</Text></Text>
                 </View>
-                <View style={styles.headerSegment}>
-                    <Left style={{flex: 0.15}}/>
-                    {this.renderControlTab()}
-                    <Right style={{flex: 0.15}}/>
+                <View style={styles.profileText}>
+                    <Text>ASDADSf</Text>
+
                 </View>
+
 
 
 
@@ -159,11 +159,6 @@ export default class Mypage extends Component{
 
 
         return(
-
-
-
-
-
 
             <View style={styles.container}>
 
@@ -197,118 +192,3 @@ export default class Mypage extends Component{
         );
     }
 }
-// const win = Dimensions.get('window');
-// const styles = StyleSheet.create({
-//
-//
-//     description:{
-//         flex:5,
-//         flexDirection:'row',
-//         justifyContent: 'space-between', // step 2
-//         alignItems: 'center', // step 3
-//     },
-//
-//     titleText: {
-//         fontWeight: '600',
-//         color: 'black',
-//     },
-//     rightText: {
-//         color: 'black',
-//     },
-//     cover:{
-//         opacity:0.5,
-//         width:win.width,
-//         height:150,
-//         alignSelf: 'stretch',
-//         resizeMode: 'cover',
-//     },
-//     profile:{
-//         alignSelf:'center',
-//         position:'absolute',
-//         top:100,
-//         width:100,
-//         height:100,
-//         borderRadius:50,
-//
-//     },
-//     overlay:{
-//         backgroundColor: 'black'
-//     },
-//     name:{
-//       position:'absolute',
-//         top:120,
-//         left:20,
-//         bottom:0,
-//         color: 'white',
-//         fontSize:15,
-//         backgroundColor:'transparent'
-//     },
-//     textArea:{
-//         backgroundColor: "transparent",
-//         paddingTop:20,
-//         paddingBottom:10,
-//         flexDirection: 'row', // step 1
-//         justifyContent: 'space-between', // step 2
-//         alignItems: 'center', // step 3
-//     },
-//     buttonLeft:{
-//         paddingLeft:40,
-//         color: "black",
-//
-//     },
-//
-//     buttonRight:{
-//
-//         paddingRight:45,
-//         color:"black",
-//
-//     },
-//     number:{
-//         fontSize:20,
-//         fontWeight:'500',
-//
-//
-//     },
-//     buttonArea:{
-//         backgroundColor: "white",
-//         paddingTop:10,
-//         paddingBottom:10,
-//         flexDirection: 'row', // step 1
-//         justifyContent: 'space-between', // step 2
-//         alignItems: 'center', // step 3
-//         borderBottomWidth:2,
-//         borderBottomColor:"#fbf9f9",
-//
-//     },
-//     hairline:{
-//         flex:0.3,
-//         backgroundColor:"#fbf9f9",
-//         padding:10,
-//
-//     },
-//     iconLeft: {
-//         color:"#ff5733",
-//         paddingLeft:80,
-//
-//
-//     },
-//     iconRight:{
-//         color:"#ff5733",
-//         paddingRight:80,
-//     },
-//
-//
-//     container: {
-//         flex: 0.6,
-//         flexDirection: 'column',
-//     },
-//     row:{
-//         flex:1,
-//         padding: 42,
-//         fontSize:24,
-//         borderBottomWidth:2,
-//         borderRightColor:'black',
-//     },
-//
-//
-// });
