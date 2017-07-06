@@ -10,7 +10,6 @@ import {
 
 
 } from 'react-native'
-import SearchBar from 'react-native-searchbar'
 
 
 const items = [
@@ -42,41 +41,23 @@ const items = [
 export default class Rank extends Component{
 
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            items,
-            results: []
-        };
-        this._handleResults = this._handleResults.bind(this);
-    }
 
-
-    _handleResults(results) {
-        this.setState({ results });
-    }
     render(){
 
 
         return(
             <View style={styles.container}>
                 <StatusBar barStyle="light-content"/>
+                <View style={styles.navbar}>
+                    <TouchableOpacity><Icon name="ios-camera" size={24} color="white"/></TouchableOpacity>
+                    <Text style={styles.titleText}>Rank</Text>
+                    <TouchableOpacity><Icon name="md-arrow-round-forward" size={24} color="white"/></TouchableOpacity>
+                </View>
 
 
 
 
-                    <SearchBar
-                        ref={(ref) => this.searchBar = ref}
-                        data={items}
-                        handleResults={this._handleResults}
-                        showOnLoad
-                        // iOSPadding={true}
-                        textColor="white"
-                        heightAdjust={-10}
-                        backgroundColor="#ff5733"
-                        hideBack={true}
-                        fontSize={14}
-                    />
+
 
 
 
@@ -107,6 +88,10 @@ const styles = StyleSheet.create({
     tabbar: {
         backgroundColor: '#ffc305',
         height: 45,
+    },
+    titleText:{
+      color:"white",
+
     },
     tab: {
 

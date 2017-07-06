@@ -5,7 +5,8 @@ const {width, height} = Dimensions.get('window');
 
 export default  {
     container: {
-        flex: 1
+        flex: 1,
+        flexDirection: 'column',
     },
     header: {
         width: width,
@@ -205,15 +206,48 @@ export default  {
     },
 
 
-    container: {
-        flex: 0.6,
-        flexDirection: 'column',
-    },
+
     profileText:{
-        flex:0.7,
-        backgroundColor:"red",
+        borderTopWidth:1,
+        borderTopColor:"#fbf9f9",
+
+        paddingTop:20,
+        paddingHorizontal:30,
+
+        // textAlign:"center",
+    },
+    profileword:{
+        textAlign:"center",
+        fontSize:13,
+        color:"#767676"
 
     },
+    setting:{
+        position:'absolute',
+        top:-130,
+        right:10,
+        color: 'white',
+        fontSize:20,
+        backgroundColor:"transparent"
+
+    },
+    two:{
+        flex:0.5,
+    },
+    sns:{
+        flex:0.1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingBottom:25,
+    },
+    snsIcon:{
+        paddingHorizontal:5,
+        color:"#ee5433"
+
+    }
+
+
 
 
 }

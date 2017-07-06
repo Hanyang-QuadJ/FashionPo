@@ -1,29 +1,33 @@
 import React, {Component} from 'react'
 
-import {Button, Header,Icon, Input, Item, Left, Right,} from "native-base";
+import { Header, Input, Item, Left, Right,} from "native-base";
 
 import {
     View,
     Image,
     Alert,
     Text,
+    Button,
     Dimensions,
+    TouchableOpacity,
+    Touchable
 
 
 } from 'react-native'
-// import Icon from 'react-native-vector-icons/Ionicons'
+
 
 // import FitImage from 'react-native-fit-image'
 // import Mypicture from './Mypicture'
 // import MypageTab from './MypageTab'
 // import Follow from './Follow'
 import styles from '../styles'
-import LoadingSpinner from "../loadingSpinner/LoadingSpinner";
+// import LoadingSpinner from "../loadingSpinner/LoadingSpinner";
 import ControlTab from "../controlTab/ControlTab";
 import FlatListItem from "../itemContainer/flatListItem";
 import FlatListGrid from "../itemContainer/flatListGrid";
 import UltimateListView from "react-native-ultimate-listview";
 import FitImage from "react-native-fit-image"
+import Icon from "react-native-vector-icons/Ionicons";
 
 
 
@@ -46,7 +50,7 @@ export default class Mypage extends Component{
         try {
             //This is required to determinate whether the first loading list is all loaded.
             let pageLimit = 24;
-            if (this.state.layout === 'grid') pageLimit = 60;
+
             let skip = (page - 1) * pageLimit;
 
             //Generate dummy data
@@ -94,16 +98,12 @@ export default class Mypage extends Component{
     };
 
     renderItem = (item, index, separator) => {
-        if (this.state.layout === 'list') {
-            return (
-                <FlatListItem item={item} index={index} onPress={this.onPressItem}/>
-            );
-        } else if (this.state.layout === 'grid') {
-            return (
-                <FlatListGrid item={item} index={index} onPress={this.onPressItem}/>
-            );
-        }
-    };
+
+        return (
+            null
+        )
+    }
+
 
     onPressItem = (type, index, item) => {
         Alert.alert(type, `You're pressing on ${item}`);
@@ -111,9 +111,8 @@ export default class Mypage extends Component{
 
     renderControlTab = () => {
         return (
-            <ControlTab layout={this.state.layout}
-                        onChangeLayout={this.onChangeLayout}
-            />
+            <ControlTab  layout={this.state.layout}
+                         onChangeLayout={this.onChangeLayout}/>
         );
     };
 
@@ -122,7 +121,9 @@ export default class Mypage extends Component{
             <View style={styles.container}>
                 <View style={styles.overlay}>
                     <Image source={require('../../../img/cover.png')} style={styles.cover} />
+                    <TouchableOpacity><Icon style={styles.setting} name="ios-settings"/></TouchableOpacity>
                     <Text style={styles.name}>Lee Haran</Text>
+
                 </View>
                 <Image source={require('../../../img/profile.png')} style={styles.profile}/>
 
@@ -134,8 +135,12 @@ export default class Mypage extends Component{
                     <Text style={styles.buttonRight}>Follwings{"\n"}    <Text style={styles.number}>20</Text></Text>
                 </View>
                 <View style={styles.profileText}>
-                    <Text>ASDADSf</Text>
+                    <Text style={styles.profileword}>He who spares the rod hates his son, but he who loves him is careful to discipline him.</Text>
 
+                </View>
+
+                <View style={styles.two}>
+                    {this.renderControlTab()}
                 </View>
 
 
@@ -146,11 +151,11 @@ export default class Mypage extends Component{
         );
     };
 
-    renderPaginationFetchingView = () => {
-        return (
-            <LoadingSpinner height={height * 0.2} text="loading..."/>
-        );
-    };
+    // renderPaginationFetchingView = () => {
+    //     return (
+    //         <LoadingSpinner height={height * 0.2} text="loading..."/>
+    //     );
+    // };
 
 
 
@@ -162,28 +167,35 @@ export default class Mypage extends Component{
 
             <View style={styles.container}>
 
-                <UltimateListView
-                    ref={(ref) => this.listView = ref}
-                    key={this.state.layout} //this is important to distinguish different FlatList, default is numColumns
-                    onFetch={this.onFetch}
-                    keyExtractor={(item, index) => `${this.state.layout} - ${item}`}  //this is required when you are using FlatList
-                    refreshableMode="advanced" //basic or advanced
+                    <View style={styles.overlay}>
+                        <Image source={require('../../../img/cover.png')} style={styles.cover} />
+                        <TouchableOpacity><Icon style={styles.setting} name="ios-settings"/></TouchableOpacity>
+                        <Text style={styles.name}>Lee Haran</Text>
+
+                    </View>
+                    <Image source={require('../../../img/profile.png')} style={styles.profile}/>
 
 
-                    item={this.renderItem}  //this takes three params (item, index, separator)
-                    numColumns={this.state.layout === 'list' ? 1 : 3} //to use grid layout, simply set gridColumn > 1
-                    columnWrapperStyle={{height: 120}}  //use this line to customise style of each row in FlatList, only work when gridColumn > 1
+                    <View style={styles.textArea}>
 
-                    //----Extra Config----
-                    header={this.renderHeader}
-                    paginationFetchingView={this.renderPaginationFetchingView}
-                    //sectionHeaderView={this.renderSectionHeaderView}   //not supported on FlatList
-                    //paginationFetchingView={this.renderPaginationFetchingView}
-                    //paginationAllLoadedView={this.renderPaginationAllLoadedView}
-                    //paginationWaitingView={this.renderPaginationWaitingView}
-                    //emptyView={this.renderEmptyView}
-                    //separator={this.renderSeparatorView}
-                />
+                        <Text style={styles.buttonLeft}>Followers{"\n"}     <Text style={styles.number}>10</Text></Text>
+
+                        <Text style={styles.buttonRight}>Follwings{"\n"}    <Text style={styles.number}>20</Text></Text>
+                    </View>
+                    <View style={styles.profileText}>
+                        <Text style={styles.profileword}>He who spares the rod hates his son, but he who loves him is careful to discipline him.</Text>
+
+                    </View>
+                <View style={styles.sns}>
+                    <TouchableOpacity><Icon name="logo-twitter" size={28} style={styles.snsIcon}/></TouchableOpacity>
+                    <TouchableOpacity><Icon name="logo-facebook" size={28} style={styles.snsIcon}/></TouchableOpacity>
+                    <TouchableOpacity><Icon name="logo-instagram" size={28} style={styles.snsIcon}/></TouchableOpacity>
+                </View>
+                    <View style={styles.two}>
+                        {this.renderControlTab()}
+                    </View>
+
+
             </View>
 
 

@@ -6,7 +6,7 @@ import { TabViewAnimated, TabBar } from 'react-native-tab-view';
 import Rank from './Rank/Rank';
 import Vote from './Vote/Vote';
 import Upload from './Upload/Upload';
-import Profile from './Profile/index';
+import Profile from './Profile'
 
 
 
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     tabbar: {
-        backgroundColor: '#fdfdfd',
+        backgroundColor: '#fafafa',
         height: 45,
         flexDirection: 'row',
         justifyContent: 'space-between',
