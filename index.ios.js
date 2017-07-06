@@ -1,6 +1,5 @@
 import React, { Component, } from 'react';
 
-
 import {
     AppRegistry,
     View,
@@ -8,7 +7,7 @@ import {
     NavigatorIOS,
     Navigator} from 'react-native';
 
-import Login from "./app/pages/Authentication/index";
+import Login from './app/pages/Authentication';
 
 
 export default class FashionPo extends Component {

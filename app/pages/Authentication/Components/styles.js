@@ -11,7 +11,6 @@ export const styles = StyleSheet.create({
         fontSize: 18,
         textAlign: 'center',
         paddingBottom:5
-
     },
     textHead:{
         textAlign: 'center',
@@ -27,7 +26,6 @@ export const styles = StyleSheet.create({
         marginLeft:30,
         marginRight:30,
         marginTop:8,
-
     },
     button:{
         marginTop:40,
