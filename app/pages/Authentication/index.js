@@ -1,6 +1,7 @@
 
 import React, {Component} from 'react'
 import Button from 'react-native-button'
+import PropTypes from 'prop-types';
 
 
 
@@ -20,7 +21,6 @@ import {
 
 } from 'react-native';
 import Vote from '../Main/index';
-import
 
 var STORAGE_KEY = 'id_token';
 
@@ -140,7 +140,7 @@ export default class Login extends Component {
 
                 </View>
                 <Button
-                    onPress={this._userLogin}
+                    onPress={this._navigateToMain}
                     containerStyle={{padding:20, overflow:'hidden', borderRadius:5, backgroundColor: '#FFC305', marginLeft:25, marginRight:25,}}
                     style={{fontSize: 15, color: 'black', fontWeight:'100', letterSpacing:3 }}>
 
