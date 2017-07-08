@@ -20,18 +20,19 @@ import {
 
 } from 'react-native';
 import Vote from '../Main/index';
+import
 
 var STORAGE_KEY = 'id_token';
 
-export default class Login extends Component{
+export default class Login extends Component {
 
     constructor(props) {
         super(props);
-        this.initialState = {
+        this.state = {
             emailText: '',
             passwdText: '',
         };
-        this.state = this.initialState;
+
     }
 
     async _onValueChange(item, selectedValue) {
@@ -48,7 +49,7 @@ export default class Login extends Component{
             component: Vote,
             title: 'Vote'
         });
-    };
+    }
 
     _userLogin() {
         if (true) {
@@ -61,7 +62,8 @@ export default class Login extends Component{
             })
             .then((response) => response.json())
             .then((responseJson) => {
-                AlertIOS.alert("Response Body -> " + JSON.stringify(responseJson.message));
+                this._onValueChange(STORAGE_KEY, responseJson.token),
+                AlertIOS.alert("Response Body -> " + JSON.stringify(responseJson.message))
             })
             .catch((error) => {
                 console.error(error);
@@ -124,19 +126,21 @@ export default class Login extends Component{
                         onSubmitEditing={ () => this.passwordInput.focus() }
                         returnKeyType="next"/>
                     <View style={styles.hairline}/>
+                    <Text>{ this.emailText }</Text>
 
                     <Text style={ styles.textHead }>Password</Text>
                     <TextInput style={ styles.textInput }
+                        onChangeText={ (text) => this.setState({passwdText: text}) }
+                        value={ this.state.passwdText }
                         secureTextEntry={ true }
                         autoCorrect={ false }
                         returnKeyType="go"
-                        ref={ (input) => this.passwordInput = input }
                         secureTextEntry={ true }/>
                     <View style={styles.hairline}/>
 
                 </View>
                 <Button
-                    onPress={this._userLogin()}
+                    onPress={this._userLogin}
                     containerStyle={{padding:20, overflow:'hidden', borderRadius:5, backgroundColor: '#FFC305', marginLeft:25, marginRight:25,}}
                     style={{fontSize: 15, color: 'black', fontWeight:'100', letterSpacing:3 }}>
 
