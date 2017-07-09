@@ -54,7 +54,7 @@ export default class Login extends Component {
     };
 
     _userLogin() {
-        if (!AsyncStorage.getItem(STORAGE_KEY)) {
+        if (true) {
             return fetch("http://54.162.160.91/api/auth/login", {
                 method: "POST",
                 headers : {
@@ -74,8 +74,6 @@ export default class Login extends Component {
             .catch((error) => {
                 console.error("Julian: " + error);
             });
-        } else {
-            this._navigateToMain();
         }
     }
 
