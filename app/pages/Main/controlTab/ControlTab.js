@@ -59,7 +59,7 @@ export default class ControlTab extends PureComponent<void, *, State > {
                     style={[styles.icon, { opacity: filledOpacity }]}
                 />
                 <AnimatedIcon
-                    name={route.icon}
+                    name={route.icon+"-outline"}
                     size={30}
                     style={[styles.icon2, styles.outline, { opacity: outlineOpacity }]}
                 />
@@ -139,7 +139,11 @@ const styles = StyleSheet.create({
 
     },
     tabbar: {
-        backgroundColor: '#fafafa',
+        backgroundColor: 'transparent',
+        borderTopWidth:1,
+        borderTopColor:"#dadada",
+        borderBottomWidth:1,
+        borderBottomColor:"#dadada",
 
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -160,8 +164,8 @@ const styles = StyleSheet.create({
     tab: {
         flex: 1,
         alignItems: 'center',
-        paddingTop: 15,
-        paddingBottom:15,
+        paddingTop: 2,
+        paddingBottom:2,
 
 
     },

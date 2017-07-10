@@ -186,7 +186,6 @@ export default  {
         alignItems: 'center', // step 3
         borderBottomWidth:2,
         borderBottomColor:"#fbf9f9",
-
     },
     hairline:{
         flex:0.3,
@@ -208,6 +207,7 @@ export default  {
 
 
     profileText:{
+        flex:0.1,
         borderTopWidth:1,
         borderTopColor:"#fbf9f9",
 
@@ -240,12 +240,82 @@ export default  {
         alignItems: 'center',
         justifyContent: 'center',
         paddingBottom:25,
+        paddingTop:8,
     },
     snsIcon:{
         paddingHorizontal:5,
-        color:"#ee5433"
+        color:"#ff5733"
 
+    },
+    myPicture:{
+        flex:0.3,
+        borderTopWidth:1,
+        borderTopColor:"#f9f9f9",
+        overflow: 'hidden',
+        flexDirection:"row",
+
+
+    },
+    myPictures:{
+        flex:1,
+        position: 'relative',
+        margin: 10,
+
+    },
+    moreInfo:{
+        justifyContent:"center",
+        alignItems:"center",
+        paddingBottom:5,
+    },
+    profileSection:{
+        flex:0.5,
+        paddingVertical:5,
+
+        flexDirection:"row",
+        justifyContent:"center",
+        alignItems:'center',
+    },
+    profileName:{
+        marginLeft:5,
+
+    },
+    profilePicture:{
+        width:45,
+        height:45,
+        borderRadius:22,
+    },
+
+    profileImage:{
+      width:width.width/3-10,
+        height:410,
+        resizeMode:"contain",
+    },
+    likeCount:{
+        fontSize:18,
+        fontWeight:'500',
+        marginLeft:15,
+        color:"#ff5733"
+
+    },
+    likeArea:{
+        flexDirection:"row",
+        alignItems:'center',
+        justifyContent:'space-between',
+    },
+    likeButton:{
+      marginRight:25,
+    },
+    shareButton:{
+      marginRight:10,
+
+    },
+    likes:{
+        fontSize:14,
+        color:"black",
+        fontWeight:"200",
     }
+
+
 
 
 

@@ -10,7 +10,7 @@ import {
     Button,
     Dimensions,
     TouchableOpacity,
-    Touchable
+    ScrollView,
 
 
 } from 'react-native'
@@ -23,6 +23,7 @@ import {
 import styles from '../styles'
 // import LoadingSpinner from "../loadingSpinner/LoadingSpinner";
 import ControlTab from "../controlTab/ControlTab";
+import Fitimage from 'react-native-fit-image';
 import FlatListItem from "../itemContainer/flatListItem";
 import FlatListGrid from "../itemContainer/flatListGrid";
 import UltimateListView from "react-native-ultimate-listview";
@@ -165,14 +166,14 @@ export default class Mypage extends Component{
 
         return(
 
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
 
-                    <View style={styles.overlay}>
+                    <ScrollView style={styles.overlay}>
                         <Image source={require('../../../img/cover.png')} style={styles.cover} />
                         <TouchableOpacity><Icon style={styles.setting} name="ios-settings"/></TouchableOpacity>
                         <Text style={styles.name}>Lee Haran</Text>
 
-                    </View>
+                    </ScrollView>
                     <Image source={require('../../../img/profile.png')} style={styles.profile}/>
 
 
@@ -191,12 +192,34 @@ export default class Mypage extends Component{
                     <TouchableOpacity><Icon name="logo-facebook" size={28} style={styles.snsIcon}/></TouchableOpacity>
                     <TouchableOpacity><Icon name="logo-instagram" size={28} style={styles.snsIcon}/></TouchableOpacity>
                 </View>
+                <View style={styles.myPicture}>
+                    <Fitimage source={require("../../../img/myPic1.png")} originalWidth={30} originalHeight={40} style={styles.myPictures}></Fitimage>
+                    <Fitimage source={require("../../../img/myPic2.png")} originalWidth={30} originalHeight={40} style={styles.myPictures}></Fitimage>
+                    <Fitimage source={require("../../../img/myPic3.png")} originalWidth={30} originalHeight={40} style={styles.myPictures}></Fitimage>
+
+
+                </View>
+                <View  style={styles.moreInfo}><Icon name="ios-search" size={20} /></View>
+
                     <View style={styles.two}>
                         {this.renderControlTab()}
                     </View>
+                <View style={styles.profileSection}>
+                    <Image source={require('../../../img/profile2.png')} style={styles.profilePicture}/>
+                    <Text style={styles.profileName}>llan_e</Text>
+                </View>
+                <View style={styles.profileImageSection}>
+                    <Image source={require('../../../img/post1.png')} style={styles.profileImage}/>
+                </View>
+                <View style={styles.likeArea}>
+                    <Text style={styles.likeCount}>56 <Text style={styles.likes}>Likes</Text></Text>
+                    <Icon name="md-heart-outline" size={26} style={styles.likeButton}/>
+                    <Icon name="ios-share-alt-outline" size={26} style={styles.likeButton}/>
+                </View>
 
 
-            </View>
+
+            </ScrollView>
 
 
 

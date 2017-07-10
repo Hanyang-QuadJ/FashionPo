@@ -1,3 +1,4 @@
+
 import React, {Component} from 'react'
 import Icon from 'react-native-vector-icons/Ionicons'
 import {
@@ -6,10 +7,12 @@ import {
     StatusBar,
     StyleSheet,
     Navigator,
+    Image,
     TouchableOpacity,
 
 
 } from 'react-native'
+import SearchBar from 'react-native-searchbar'
 
 
 const items = [
@@ -41,27 +44,60 @@ const items = [
 export default class Rank extends Component{
 
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            items,
+            results: []
+        };
+        this._handleResults = this._handleResults.bind(this);
+    }
 
+
+    _handleResults(results) {
+        this.setState({ results });
+    }
     render(){
 
 
         return(
             <View style={styles.container}>
                 <StatusBar barStyle="light-content"/>
-                <View style={styles.navbar}>
-                    <TouchableOpacity><Icon name="ios-camera" size={24} color="white"/></TouchableOpacity>
-                    <Text style={styles.titleText}>Rank</Text>
-                    <TouchableOpacity><Icon name="md-arrow-round-forward" size={24} color="white"/></TouchableOpacity>
+
+
+
+
+                <SearchBar
+                    ref={(ref) => this.searchBar = ref}
+                    data={items}
+                    handleResults={this._handleResults}
+                    showOnLoad
+                    // iOSPadding={true}
+                    textColor="white"
+                    heightAdjust={0}
+                    backgroundColor="#ff5733"
+                    hideBack={true}
+                    fontSize={14}
+                />
+
+
+
+
+                <View style={styles.firstPlace}>
+                    <View style={styles.title}>
+                        <Text>Rank</Text>
+                    </View>
+                    <View style={styles.Imagearea}>
+                        <Image source={require('../../../img/post1.png')} style={styles.firstImage}></Image>
+
+                    </View>
+
+
+                    <Text>1st Place</Text>
+
+
                 </View>
-
-
-
-
-
-
-
-
-                <View style={styles.spacetop}>
+                <View style={styles.secondPlace}>
 
 
                 </View>
@@ -80,18 +116,27 @@ export default class Rank extends Component{
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        flexDirection:'column'
     },
-    spacetop:{
+    firstPlace:{
         flex:1,
-        backgroundColor:"yellow"
+        backgroundColor:"yellow",
+        justifyContent:'center',
+        alignItems:'center',
+    },
+    firstImage:{
+        flexDirection:'column',
+        width:150,
+        height:200,
+        resizeMode:"contain",
+    },
+    secondPlace:{
+        flex:1,
+        backgroundColor:"green"
     },
     tabbar: {
         backgroundColor: '#ffc305',
         height: 45,
-    },
-    titleText:{
-      color:"white",
-
     },
     tab: {
 
@@ -127,6 +172,7 @@ const styles = StyleSheet.create({
         marginTop: -2,
     },
     navbar: {
+        flex:0.2,
         paddingTop: 20,
         height: 64,
         backgroundColor: '#ff5733',
@@ -137,4 +183,14 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between', // step 2
         alignItems: 'center', // step 3
     },
+    title:{
+        flex:0.2,
+
+    },
+    Imagearea:{
+        flex:1,
+
+    },
+
+
 });

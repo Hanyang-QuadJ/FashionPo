@@ -3,9 +3,9 @@ import { Animated, View, Text, StyleSheet,StatusBar,TouchableWithoutFeedback } f
 import PropTypes from 'prop-types';
 import  Icon  from 'react-native-vector-icons/Ionicons';
 import { TabViewAnimated, TabBar } from 'react-native-tab-view';
-import Rank from './Rank/Rank';
-import Vote from './Vote/Vote';
-import Upload from './Upload/Upload';
+import Rank from './Rank/index';
+import Vote from './Vote/index';
+import Upload from './Upload/index';
 import Profile from './Profile'
 
 
