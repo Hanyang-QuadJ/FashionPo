@@ -6,7 +6,7 @@ import { TabViewAnimated, TabBar } from 'react-native-tab-view';
 import Rank from './Rank/index';
 import Vote from './Vote/index';
 import Upload from './Upload/index';
-import Profile from './Profile'
+import Profile from './Profile';
 
 
 
@@ -18,6 +18,7 @@ type Route = {
     key: string,
     title: string,
     icon: string,
+    username: string
 };
 
 type State = NavigationState<Route>;
@@ -26,6 +27,27 @@ type State = NavigationState<Route>;
 export default class Main extends PureComponent<void, *, State> {
     static title = 'No animation';
     static backgroundColor = '#f47857';
+
+    getUserProfile = () => {
+        fetch('http://54.162.160.91/api/user/authed', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                token: AsyncStorage.getItem(STORAGE_KEY)
+            })
+        })
+        .then((response) => response.json())
+        .then((responseData) => {
+            console.log(responseData);
+            Route.username = responseData.username;
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    };
 
 
 

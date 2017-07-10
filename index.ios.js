@@ -20,8 +20,8 @@ class CustomNavigate extends Component {
                 style={{flex:1}}
                 navigationBarHidden={true}
                 initialRoute={{
-                    component: this.props.nextpage,
-                    title: this.props.nextPageName,
+                    component: Login,
+                    title: 'Login',
                 }}
             />
         )
@@ -39,21 +39,23 @@ export default class FashionPo extends Component {
         }
     }
 
-    ComponentWillMount() {
-        if (AsyncStorage.getItem(STORAGE_KEY)) {
-            this.setState(previousState => {
-                return { nextPage: Vote, nextPageName: 'Vote' };
-            });
-        } else {
-            this.setState(previousState => {
-                return { nextPage: Login, nextPageName: 'Login' };
-            });
-        }
-    };
+    // ComponentWillMount() {
+    //     if (AsyncStorage.getItem(STORAGE_KEY)) {
+    //         this.setState(previousState => {
+    //             return { nextPage: Vote, nextPageName: 'Vote' };
+    //         });
+    //     } else {
+    //         this.setState(previousState => {
+    //             return { nextPage: Login, nextPageName: 'Login' };
+    //         });
+    //     }
+    // };
+
+    // nextpage={this.state.nextPage} nextpageName={this.state.nextPageName}
 
     render() {
         return (
-            <CustomNavigate nextpage={this.state.nextPage} nextpageName={this.state.nextPageName}/>
+            <CustomNavigate />
         );
     }
 

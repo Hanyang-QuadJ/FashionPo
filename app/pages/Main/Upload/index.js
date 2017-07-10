@@ -8,6 +8,7 @@ import {
     StatusBar,
     Image,
     ScrollView,
+    AsyncStorage
 
 
 
@@ -18,19 +19,49 @@ import CoverFlow from '../Profile/Components/CoverFlow';
 
 
 
-
+let STORAGE_KEY = 'id_token';
 
 export default class Upload extends Component{
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: null
+        }
+    }
+
+    getUserProfile = () => {
+        fetch('http://54.162.160.91/api/user/authed', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                token: AsyncStorage.getItem(STORAGE_KEY)
+            })
+        })
+        .then((response) => response.json())
+        .then((responseData) => {
+            console.log(responseData);
+            this.state.userName = responseData.username;
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    };
+
+    ComponentDidMount() {
+        this.getUserProfile();
+    }
+
     render(){
         return(
-
-
-
             <ScrollView style={styles.container}>
                 <StatusBar barStyle="light-content"/>
                 <View style={styles.navbar}>
                     <TouchableOpacity><Icon name="ios-camera" size={24} color="white"/></TouchableOpacity>
-                    <Text style={styles.titleText}>Kendall Jenner</Text>
+                    <Text style={styles.titleText}>{this.state.username}</Text>
                     <TouchableOpacity><Icon name="md-arrow-round-forward" size={24} color="white"/></TouchableOpacity>
                 </View>
                 <CoverFlow/>
