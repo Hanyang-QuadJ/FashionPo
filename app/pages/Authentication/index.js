@@ -1,18 +1,15 @@
+import React, {Component} from 'react';
+import Button from 'react-native-button';
 
-import React, {Component} from 'react'
-import Button from 'react-native-button'
-
-import { styles } from './Components/styles'
+import { styles } from './Components/styles';
 import {
     Text,
     TextInput,
     View,
-    StyleSheet,
     Image,
     KeyboardAvoidingView,
     StatusBar,
-    AsyncStorage,
-    AlertIOS
+    AsyncStorage
 } from 'react-native';
 import Vote from '../Main/index';
 import Register from './Components/register';
@@ -27,7 +24,20 @@ export default class Login extends Component {
             email: null,
             password: null,
         };
-        this._userLogin = this._userLogin.bind(this);
+    }
+
+    async checkToken(item, selectedValue) {
+        try {
+            const value = await AsyncStorage.getItem(STORAGE_KEY);
+            if (value !== null){
+                // We have data!!
+                this.state.token_value = value;
+                console.log(this.state.token_value);
+            }
+        } catch (error) {
+            // Error retrieving data
+            console.log(error);
+        }
     }
 
     async saveToken(item, selectedValue) {
@@ -53,7 +63,7 @@ export default class Login extends Component {
         });
     };
 
-    _userLogin() {
+    _userLogin = () => {
         if (true) {
             return fetch("http://54.162.160.91/api/auth/login", {
                 method: "POST",
@@ -75,7 +85,7 @@ export default class Login extends Component {
                 console.error("Julian: " + error);
             });
         }
-    }
+    };
 
     render() {
 

@@ -28,6 +28,8 @@ export default class Register extends Component {
         });
     };
 
+
+
     _userResister = () => {
         if (true) {
             return fetch("http://54.162.160.91/api/auth/register", {
