@@ -83,10 +83,6 @@ export default class UserLogin extends Component {
 		}
 	}
 
-	_userLogin() {
-
-	}
-
 	render() {
 	  return (
 	    <View style={styles.container}>

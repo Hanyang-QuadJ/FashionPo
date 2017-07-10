@@ -16,6 +16,14 @@ import Fitimage from 'react-native-fit-image';
 
 
 export default class Vote extends Component{
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            blurBool : 10,
+        };
+    }
+
     render(){
         return(
 
@@ -29,63 +37,44 @@ export default class Vote extends Component{
                     <TouchableOpacity><Icon name="md-arrow-round-forward" size={24} color="white"/></TouchableOpacity>
 
                 </View>
+
                 <StatusBar barStyle="dark-content"/>
 
-                <View style={styles.spacetop}>
+                <View style={styles.vote}>
+
+                    <Fitimage source={require('./img/vote1.png')}
+                        style={styles.votePicture}
+                        blurRadius={this.state.blurBool}>
+
+                        <View style={styles.iconbar}>
+                            <View style={styles.icons}>
+                                <TouchableOpacity><Icon name="ios-heart-outline" size={24} color="black" /></TouchableOpacity>
+                                </View>
+                            <View style={styles.icons}>
+                                <TouchableOpacity><Icon name="ios-text-outline" size={24} color="black" /></TouchableOpacity>
+                            </View>
+                            <View style={styles.icons}>
+                                <TouchableOpacity><Icon name="ios-bookmark-outline" size={24} color="black" /></TouchableOpacity>
+                            </View>
+                        </View>
+
+                    </Fitimage>
 
                 </View>
 
-                <View style={styles.picture}>
-
-                    <Fitimage source={require('../../../img/vote1.png')}
-                        style={styles.vote1}
-                        blurRadius={10} />
-
-                </View>
-
-                <View style={styles.spacetop}>
-                    <View style={styles.iconBar}>
-                        <Icon name="ios-heart-outline" size={24} color="white" style={styles.icons} />
-                        <Icon name="ios-text-outline" size={24} color="white" style={styles.icons} />
-                        <Icon name="ios-bookmark-outline" size={24} color="white" style={styles.icons} />
-                    </View>
-                </View>
             </View>
 
         );
     }
 }
 const styles = StyleSheet.create({
-
-    vote1:{
-        flex:2,
+    container: {
+        flex: 1,
+        flexDirection: 'column',
     },
-    vote2:{
-        flex:2,
-    },
-    line1:{
-        flex: .1,
-        backgroundColor:"#ff5733",
-    },
-    spaceText:{
-        textAlign: "center",
-    },
-    spacetop:{
-        flex:2.5,
-        backgroundColor:"black",
-
-    },
-    picture:{
-       flex:4,
-        flexDirection:"row",
-    },
-    main:{
-        flex:1.5,
-        fontSize: 30,
-        padding: 100,
-        justifyContent:'center',
-        alignItems:'center',
-        textAlign: 'center',
+    titleText: {
+        fontWeight: '600',
+        color: 'white',
     },
     navbar: {
         paddingTop: 20,
@@ -98,24 +87,28 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between', // step 2
         alignItems: 'center', // step 3
     },
-    leftText: {
-        color: 'white',
-    },
-    titleText: {
-        fontWeight: '600',
-        color: 'white',
-    },
-    rightText: {
-        color: 'white',
-    },
-    container: {
+    vote:{
         flex: 1,
-        flexDirection: 'column',
-    },
-    iconBar: {
         flexDirection: 'row',
     },
+    votePicture:{
+       flex: 1,
+       alignItems: 'flex-end',
+    },
+    spacetop:{
+        flex:2.5,
+        backgroundColor:"black",
+    },
+    iconBar: {
+        flex: 1,
+        flexDirection: 'row',
+        padding: 3,
+        backgroundColor: 'black',
+        opacity: 10
+    },
     icons: {
-        margin: 7
+        margin: 7,
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 });

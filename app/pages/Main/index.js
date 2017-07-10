@@ -33,7 +33,7 @@ export default class Main extends PureComponent<void, *, State> {
         index: 0,
         routes: [
             { key: '1',  icon: 'ios-trophy'},
-            { key: '2', icon: 'ios-person'},
+            { key: '2',  icon: 'ios-person'},
             { key: '3',  icon: 'ios-camera' },
             { key: '4',  icon: 'ios-eye',},
 
